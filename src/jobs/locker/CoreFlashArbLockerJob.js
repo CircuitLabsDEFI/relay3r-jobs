@@ -3,9 +3,9 @@ const ethers = require("ethers");
 
 const contract = require("../../contracts/locker/CoreFlashArbRelay3r.js");
 
-class CoreFlashArbRelayerJob extends Job {
+class CoreFlashArbLockerJob extends Job {
     constructor(account, provider) {
-        super("CoreFlashArbRelayer",
+        super("CoreFlashArbLockerJob",
             new ethers.Contract(contract.address, contract.abi, account),
             provider
         );
@@ -32,4 +32,4 @@ class CoreFlashArbRelayerJob extends Job {
 
 }
 
-exports.CoreFlashArbRelayerJob = CoreFlashArbRelayerJob;
+exports.CoreFlashArbLockerJob = CoreFlashArbLockerJob;

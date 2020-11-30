@@ -1,4 +1,10 @@
 const {JobExecutor} = require("./jobs/JobExecutor");
+// Locker jobs
+const {CoreFlashArbLockerJob} = require("./jobs/locker/CoreFlashArbRelayerJob");
+//const {UnitradeRelayerJob} = require("./jobs/relayer/UnitradeRelayerJob");
+const {OracleLockerJob} = require("./jobs/locker/UniswapV2SlidingOracleJob");
+//const {GetBackETHRelayerJob} = require("./jobs/relayer/GetBackETHRelayerJob");
+
 // Relayer jobs
 const {CoreFlashArbRelayerJob} = require("./jobs/relayer/CoreFlashArbRelayerJob");
 const {UnitradeRelayerJob} = require("./jobs/relayer/UnitradeRelayerJob");
@@ -27,10 +33,13 @@ class JobHandler {
 
     registerAvailableJobs(){
         this.availableJobs.push(
+		    //Locker jobs
+            this.createJob(OracleLockerJob),
+            this.createJob(CoreFlashArbLockerJob),
             //Relayer jobs
             this.createJob(UniswapV2SlidingOracleJob),
             this.createJob(UnitradeRelayerJob),
-            this.createJob(CoreFlashArbRelayerJob),
+            //this.createJob(CoreFlashArbRelayerJob),
             this.createJob(GetBackETHRelayerJob),
             //Keeper jobs
             this.createJob(HegicPoolKeeperJob),

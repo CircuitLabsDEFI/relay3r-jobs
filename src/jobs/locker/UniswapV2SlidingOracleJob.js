@@ -3,13 +3,13 @@ const ethers = require("ethers");
 
 const contract = require("../../contracts/locker/uniswapv2slidingoracle.js");
 
-class UniswapV2SlidingOracleJob extends Job {
+class OracleLockerJob extends Job {
     constructor(account, provider) {
-        super("UniswapV2SlidingOracle",
+        super("OracleLockerJob",
             new ethers.Contract(contract.address, contract.abi, account),
             provider
         );
     }
 }
 
-exports.UniswapV2SlidingOracleJob = UniswapV2SlidingOracleJob;
+exports.OracleLockerJob = OracleLockerJob;
